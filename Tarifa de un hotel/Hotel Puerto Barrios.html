@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="shortcut icon" href="img/page.jpeg" />
+
+</head>
+<body>
+    <header>
+        <h1 class="titulo">Hotel<span>Puerto Barrios </span></h1>
+    </header>
+
+    <div class="nav-bg">
+        <nav class="navegacion-principal contenedor">
+            <a href="#">Inicio</a>
+            <a href="#">Sobre Nosotros</a>
+            <a href="#">Precios</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="contenido-hero">
+            <h2>Bienvenido a nuestro servicio en línea, aquí puede consultar y reservar una habitación que desee.</h2> 
+            <div class="ubicacion">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="88" height="88" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFC107" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z"/>
+                    <circle cx="12" cy="11" r="3" />
+                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
+                </svg>
+                <p>Guatemala, Puerto Barrios, Izabal</p>
+            </div>
+            <a class="boton" href="#">Contactar</a>
+        </div> <!-- .contenido-hero --> 
+    </section>
+
+    <!-- contenedor con la lista de habitaciones -->
+    <main class="contenedor sombra">
+        <h2>Estas son las habitaciones que nuestro hotel ofrece</h2>
+
+        <div class="servicios">
+            <section class="servicio">
+                <h3>Habitación Clásica. Q150.00</h3>
+                <div class="iconos">
+                    <img src="img/Habitacion_Clasica.jpg" width="180" height="180" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                </div>
+                <p> Perfecta si estás de visita ofreciendo comodidad y una buena experiencia. Máximo: 2 personas </p>
+            </section>
+        
+            <section class="servicio">
+                <h3>Habitación Doble. Q275.00</h3>
+                <div class="iconos">
+                    <img src="img/Habitacion_Doble.jpg" width="180" height="180" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                </div>
+                <p> Un hermoso lugar para quedarse ofreciéndole excelente servicio y una buena comodidad. Máximo: 4 personas </p>
+            </section>
+
+            <section class="servicio">
+                <h3>Habitación Suite. Q450.00</h3>
+                <div class="iconos">
+                    <img src="img/Habitacion_Suite.jpg" width="180" height="180" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                </div>
+                <p> La mejor experiencia con gran espacio, comodidad y unas grandiosas vistas al mar con un servicio al cliente de primera. Máximo: 6 personas </p>
+            </section>
+        </div> <!--.servicios-->
+    
+        <!-- Formulario para seleccionar la habitación y calcular la tarifa -->
+        <section>
+            <h2>Por favor seleccione qué tipo de habitación desea consultar</h2>
+
+            <form class="formulario">
+                <fieldset>
+                    <legend>Contactános llenando todos los campos</legend>
+                    <div class="contenedor-campos">
+
+                        <!-- Selección de tipo de habitación -->
+                        <div class="campo">
+                            <label>Tipo de Habitación:</label>
+                            <select id="tipoHabitacion" class="input-text">
+                                <option selected="selected" disabled>-- Selecciona una opción --</option>
+                                <option value="Clasica">Clásica - Q150.00</option>
+                                <option value="Doble">Doble - Q275.00</option>
+                                <option value="Suite">Suite - Q450.00</option>
+                            </select>
+                        </div>
+
+                        <!-- Personas adicionales -->
+                        <div class="campo">
+                            <label for="personas">Cantidad de Personas Extra:</label>
+                            <input type="number" id="personas" placeholder="Cantidad de Personas" class="input-text" min="1"/>
+                        </div>
+                        <p class="campo nota">Nota:Se cobrara un extra por cada persona adicional (Q90.00 por persona adicional)</p>
+                        
+                        <!-- Boton que hace la consulta de la tarifa -->
+                        <div>
+                            <button id="Tarifa" class="boton w-sm-100">Calcular Tarifa</button>
+                            <p class="campo nota" id="resultado">Aqui le se mostrara el resumen de su consultar:</p>
+                            <p class="campo nota" id="resultado1"></p>
+                        </div>
+                    </div> <!-- .contenedor-campos -->
+<br><br>
+                    <!-- eleccion a tipo de pago -->
+                    <div class="campo">
+                        <label for="tipoPago">Tipo de Pago:</label>
+                        <select id="tipoPago" class="input-text">
+                            <option selected="selected" disabled>-- Selecciona una opción --</option>
+                            <option value="">Tipo de pago</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Tarjeta">Tarjeta</option>
+                        </select>
+                    </div>
+
+                    <!-- Boton para cancelar el pedido -->
+                    <input type="reset" value="CANCELAR" class="boton boton2 w-sm-100" >
+                    
+                    <!--mostrar el resumen detallado -->
+                    <div id="resumenReserva" class="Reserva" style="display: none;">
+                        <h3>Resumen detallado de la reserva</h3>
+                        <p>Tipo de habitación: <span id="tipoResumen"></span></p>
+                        <p>Cantidad de personas: <span id="personasResumen"></span></p>
+                        <p>Tarifa base: <span id="tarifaBaseResumen"></span></p>
+                        <p>IVA (12%): <span id="ivaResumen"></span></p>
+                        <p>INGUAT (10%): <span id="inguatResumen"></span></p>
+                        <p>Tarifa final: <span id="tarifaFinalResumen"></span></p>
+                        <p>Gracias por usar nuestro servicio online</p>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>Pagina creada por Jason Martinez y Isai Rodriguez; copyright &copy; 2023 aviso legal y politica de privacidad</p>
+    </footer>
+
+    <script src="Calculos.js"></script>
+
+    
+
+</body>
+</html>
+ 
