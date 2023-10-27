@@ -3,12 +3,13 @@ const habitaciones = document.getElementById("tipoHabitacion");
 const personas = document.getElementById("personas");
 const tipoPagoSelect = document.getElementById("tipoPago");
 const calcularButton = document.getElementById("Tarifa");
+const cancelarButton = document.getElementById("CANCELAR");
 const resultado = document.getElementById("resultado");
 const resultado1 = document.getElementById("resultado1");
 const calendario = document.getElementById("llegada");
 
 // evento de clic al boton de calcular Tarifa
-calcularButton.addEventListener("click", () => {
+  calcularButton.addEventListener("click", () => {
 
 // evento que previene que se recarge la pagina sola
 event.preventDefault();
@@ -96,5 +97,20 @@ if (tipoPago === "Tarjeta") {
       resultado.innerHTML += "<br>Proceso realizado con éxito.";
   }
 }
-
 });
+ 
+//boton de cancelar pedido
+cancelarButton.addEventListener("click", () => {
+  // Mostrar un mensaje de reservacion cancelada en el elemento "resultado"
+  resultado.innerHTML = "Reservacion cancelada";
+
+  // Restablecer los valores de los campos y elementos a sus valores iniciales o vacíos
+  habitaciones.value = ""; 
+  personas.value = ""; 
+  tipoPagoSelect.value = ""; 
+  resultado1.innerHTML = ""; 
+  
+  // Ocultar el resumen
+  document.getElementById("resumenReserva").style.display = "none";
+});
+
